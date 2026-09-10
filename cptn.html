@@ -1,0 +1,1644 @@
+<!DOCTYPE html> <html lang="nl"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="Promising Talents Nederland is een scoutingplatform dat jonge voetbaltalenten helpt om zichtbaar en erkend te worden."> <title>Promising Talents Nederland | Scouting & Talentontwikkeling</title>
+<style>
+    :root {
+        --bg: #05070b;
+        --bg-soft: #090e16;
+        --card: #0e141f;
+        --card-2: #121a27;
+        --gold: #f5c542;
+        --gold-light: #ffe58a;
+        --blue: #2584d8;
+        --blue-light: #62b5ff;
+        --green: #35d99a;
+        --white: #fff;
+        --text: #dce5f0;
+        --muted: #7f8da1;
+        --border: rgba(255,255,255,.08);
+        --shadow: 0 25px 70px rgba(0,0,0,.45);
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: "Segoe UI", Inter, Arial, sans-serif;
+        background:
+            radial-gradient(circle at 10% 0%, rgba(37,132,216,.12), transparent 28%),
+            radial-gradient(circle at 90% 10%, rgba(245,197,66,.07), transparent 25%),
+            var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: rgba(5,7,11,.88);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+        max-width: 1250px;
+        min-height: 72px;
+        margin: auto;
+        padding: 0 25px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        color: white;
+        font-size: 1rem;
+        font-weight: 950;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .logo span {
+        color: var(--gold);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: var(--muted);
+        font-size: .82rem;
+        font-weight: 800;
+        transition: .25s;
+    }
+
+    .nav-links a:hover {
+        color: var(--gold);
+    }
+
+    /* =========================
+       INTRO HERO
+    ========================= */
+
+    .intro {
+        position: relative;
+        min-height: 680px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(5,7,11,.98) 0%,
+                rgba(5,7,11,.9) 48%,
+                rgba(5,7,11,.45) 100%
+            ),
+            radial-gradient(
+                circle at 80% 45%,
+                rgba(37,132,216,.25),
+                transparent 35%
+            );
+    }
+
+    .intro::before {
+        content: "PT";
+        position: absolute;
+        right: -30px;
+        bottom: -90px;
+        font-size: 28rem;
+        line-height: .8;
+        font-weight: 950;
+        color: rgba(255,255,255,.025);
+        pointer-events: none;
+    }
+
+    .intro::after {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        right: 8%;
+        top: 15%;
+        border-radius: 50%;
+        border: 1px solid rgba(245,197,66,.08);
+        box-shadow:
+            0 0 0 50px rgba(245,197,66,.015),
+            0 0 0 100px rgba(245,197,66,.01);
+    }
+
+    .intro-content {
+        width: min(1250px, calc(100% - 40px));
+        margin: auto;
+        position: relative;
+        z-index: 3;
+    }
+
+    .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 9px 15px;
+        border-radius: 999px;
+        color: var(--gold);
+        background: rgba(245,197,66,.06);
+        border: 1px solid rgba(245,197,66,.25);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: .68rem;
+        font-weight: 950;
+    }
+
+    .eyebrow::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 12px var(--green);
+    }
+
+    .intro h1 {
+        max-width: 900px;
+        margin-top: 24px;
+        color: white;
+        font-size: clamp(3.5rem, 8vw, 7.7rem);
+        line-height: .88;
+        letter-spacing: -5px;
+        text-transform: uppercase;
+    }
+
+    .intro h1 span {
+        color: var(--gold);
+    }
+
+    .intro-description {
+        max-width: 720px;
+        margin-top: 30px;
+        color: #aeb9c8;
+        font-size: 1.1rem;
+    }
+
+    .intro-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 13px;
+        margin-top: 32px;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 13px 21px;
+        border-radius: 10px;
+        font-size: .82rem;
+        font-weight: 900;
+        transition: .25s;
+    }
+
+    .btn-primary {
+        background: var(--gold);
+        color: #080a0e;
+    }
+
+    .btn-primary:hover {
+        background: var(--gold-light);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(245,197,66,.2);
+    }
+
+    .btn-secondary {
+        color: white;
+        background: rgba(255,255,255,.04);
+        border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+        background: rgba(255,255,255,.09);
+    }
+
+    /* =========================
+       GENERAL
+    ========================= */
+
+    .container {
+        width: min(1250px, calc(100% - 40px));
+        margin: auto;
+    }
+
+    section {
+        padding: 90px 0;
+    }
+
+    .heading {
+        margin-bottom: 42px;
+    }
+
+    .heading small {
+        color: var(--gold);
+        font-size: .7rem;
+        font-weight: 950;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .heading h2 {
+        color: white;
+        font-size: clamp(2.2rem,5vw,3.5rem);
+        line-height: 1;
+        margin-top: 8px;
+    }
+
+    .heading p {
+        max-width: 700px;
+        margin-top: 12px;
+        color: var(--muted);
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1.2fr .8fr;
+        gap: 25px;
+    }
+
+    .about-main {
+        padding: 40px;
+        border-radius: 22px;
+        background:
+            linear-gradient(145deg, rgba(37,132,216,.11), transparent),
+            var(--card);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+    }
+
+    .about-main h3 {
+        color: white;
+        font-size: 1.8rem;
+        margin-bottom: 18px;
+    }
+
+    .about-main p {
+        color: #aab6c6;
+        margin-bottom: 17px;
+    }
+
+    .about-side {
+        display: grid;
+        gap: 15px;
+    }
+
+    .about-stat {
+        padding: 28px;
+        border-radius: 17px;
+        background: var(--card);
+        border: 1px solid var(--border);
+    }
+
+    .about-stat strong {
+        display: block;
+        color: var(--gold);
+        font-size: 2rem;
+    }
+
+    .about-stat span {
+        color: var(--muted);
+        font-size: .82rem;
+    }
+
+    /* =========================
+       MISSION
+    ========================= */
+
+    .mission-grid {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 18px;
+    }
+
+    .mission-card {
+        padding: 30px;
+        border-radius: 18px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        transition: .3s;
+    }
+
+    .mission-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(245,197,66,.3);
+    }
+
+    .mission-number {
+        color: var(--gold);
+        font-size: .68rem;
+        letter-spacing: 2px;
+        font-weight: 950;
+    }
+
+    .mission-card h3 {
+        color: white;
+        margin: 10px 0;
+    }
+
+    .mission-card p {
+        color: var(--muted);
+        font-size: .9rem;
+    }
+
+    /* =========================
+       PLAYER TO WATCH
+    ========================= */
+
+    .player-watch {
+        position: relative;
+        overflow: hidden;
+        border-radius: 25px;
+        border: 1px solid rgba(245,197,66,.18);
+        background:
+            radial-gradient(circle at 85% 50%, rgba(37,132,216,.25), transparent 35%),
+            linear-gradient(135deg,#101b29,#0a0e15);
+        box-shadow: var(--shadow);
+    }
+
+    .player-watch::after {
+        content: "09";
+        position: absolute;
+        right: 15px;
+        bottom: -90px;
+        color: rgba(255,255,255,.025);
+        font-size: 24rem;
+        line-height: 1;
+        font-weight: 950;
+    }
+
+    .watch-inner {
+        position: relative;
+        z-index: 2;
+        padding: 55px;
+        display: grid;
+        grid-template-columns: 330px 1fr;
+        gap: 45px;
+        align-items: center;
+    }
+
+    .watch-avatar {
+        height: 330px;
+        border-radius: 22px;
+        display: grid;
+        place-items: center;
+        background:
+            radial-gradient(circle, rgba(37,132,216,.35), transparent 55%),
+            #0a1019;
+        border: 1px solid rgba(245,197,66,.3);
+    }
+
+    .watch-avatar span {
+        width: 170px;
+        height: 170px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--gold);
+        font-size: 5rem;
+        font-weight: 950;
+        border: 2px solid rgba(245,197,66,.7);
+        background: #172c45;
+        box-shadow: 0 0 60px rgba(37,132,216,.2);
+    }
+
+    .watch-label {
+        display: inline-flex;
+        padding: 8px 13px;
+        border-radius: 999px;
+        background: var(--gold);
+        color: #0a0c10;
+        font-size: .65rem;
+        font-weight: 950;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+
+    .watch-content h2 {
+        color: white;
+        font-size: clamp(2.6rem,6vw,4.7rem);
+        line-height: .9;
+        margin-top: 16px;
+    }
+
+    .watch-position {
+        color: var(--gold);
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: .75rem;
+        margin-top: 10px;
+    }
+
+    .watch-content p {
+        max-width: 700px;
+        color: #aeb9c7;
+        margin-top: 25px;
+    }
+
+    /* =========================
+       STATS
+    ========================= */
+
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+        gap: 14px;
+    }
+
+    .stat {
+        padding: 24px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+    }
+
+    .stat small {
+        color: var(--muted);
+        font-size: .62rem;
+        font-weight: 900;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .stat strong {
+        display: block;
+        color: white;
+        font-size: 2.25rem;
+        margin-top: 3px;
+    }
+
+    .gold {
+        color: var(--gold) !important;
+    }
+
+    .green {
+        color: var(--green) !important;
+    }
+
+    /* =========================
+       SCOUTING
+    ========================= */
+
+    .scouting-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .panel {
+        padding: 32px;
+        border-radius: 19px;
+        background: var(--card);
+        border: 1px solid var(--border);
+    }
+
+    .panel h3 {
+        color: white;
+        margin-bottom: 24px;
+    }
+
+    .skill {
+        margin-bottom: 20px;
+    }
+
+    .skill-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 7px;
+    }
+
+    .skill-header span:first-child {
+        color: #dce5ef;
+        font-weight: 750;
+    }
+
+    .skill-header span:last-child {
+        color: var(--gold);
+        font-weight: 950;
+    }
+
+    .bar {
+        height: 7px;
+        border-radius: 999px;
+        background: #19222e;
+        overflow: hidden;
+    }
+
+    .fill {
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg,var(--blue),var(--gold));
+    }
+
+    .panel p {
+        color: var(--muted);
+        margin-bottom: 16px;
+    }
+
+    .quote {
+        color: #dce5ef !important;
+        border-left: 3px solid var(--gold);
+        padding-left: 16px;
+        font-style: italic;
+    }
+
+    /* =========================
+       TALENT BOARD
+    ========================= */
+
+    .talent-grid {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 18px;
+    }
+
+    .talent {
+        overflow: hidden;
+        border-radius: 18px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        transition: .3s;
+    }
+
+    .talent:hover {
+        transform: translateY(-7px);
+        border-color: rgba(245,197,66,.3);
+    }
+
+    .talent-top {
+        height: 175px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background:
+            radial-gradient(circle,rgba(37,132,216,.28),transparent 60%),
+            #0b1018;
+    }
+
+    .talent-number {
+        position: absolute;
+        right: 14px;
+        top: 4px;
+        font-size: 5.2rem;
+        font-weight: 950;
+        color: rgba(255,255,255,.06);
+    }
+
+    .talent-avatar {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--gold);
+        background: #172a41;
+        border: 1px solid rgba(245,197,66,.45);
+        font-weight: 950;
+        font-size: 1.4rem;
+    }
+
+    .talent-body {
+        padding: 22px;
+    }
+
+    .club {
+        color: var(--gold);
+        text-transform: uppercase;
+        font-size: .63rem;
+        letter-spacing: 1.2px;
+        font-weight: 950;
+    }
+
+    .talent-body h3 {
+        color: white;
+        font-size: 1.25rem;
+        margin: 4px 0;
+    }
+
+    .talent-position {
+        color: var(--blue-light);
+        font-size: .7rem;
+        font-weight: 800;
+        margin-bottom: 14px;
+    }
+
+    .mini-stats {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 5px;
+    }
+
+    .mini-stat {
+        padding: 8px 3px;
+        text-align: center;
+        border-radius: 7px;
+        background: rgba(255,255,255,.04);
+    }
+
+    .mini-stat strong {
+        display: block;
+        color: white;
+        font-size: .9rem;
+    }
+
+    .mini-stat small {
+        color: var(--muted);
+        font-size: .5rem;
+        text-transform: uppercase;
+    }
+
+    .score {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 14px;
+        padding-top: 12px;
+        border-top: 1px solid var(--border);
+    }
+
+    .score span {
+        color: var(--muted);
+        font-size: .65rem;
+        text-transform: uppercase;
+    }
+
+    .score strong {
+        color: var(--gold);
+    }
+
+    /* =========================
+       HISTORY TABLE
+    ========================= */
+
+    .table-wrap {
+        overflow-x: auto;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+    }
+
+    table {
+        width: 100%;
+        min-width: 600px;
+        border-collapse: collapse;
+        background: var(--card);
+    }
+
+    th,
+    td {
+        padding: 18px 20px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+    }
+
+    th {
+        background: #151e2a;
+        color: var(--gold);
+        font-size: .67rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    td {
+        color: #c6d0dc;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+        text-align: center;
+        padding: 70px 30px;
+        border-radius: 23px;
+        border: 1px solid rgba(245,197,66,.16);
+        background:
+            radial-gradient(circle at center,rgba(245,197,66,.08),transparent 60%),
+            var(--card);
+    }
+
+    .cta h2 {
+        color: white;
+        font-size: clamp(2.2rem,5vw,3.8rem);
+    }
+
+    .cta p {
+        max-width: 650px;
+        margin: 15px auto 25px;
+        color: var(--muted);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+        margin-top: 70px;
+        padding: 50px 20px;
+        text-align: center;
+        background: #030509;
+        border-top: 1px solid var(--border);
+    }
+
+    .footer-logo {
+        color: white;
+        font-weight: 950;
+        letter-spacing: 2px;
+    }
+
+    .footer-logo span {
+        color: var(--gold);
+    }
+
+    footer p {
+        color: #566376;
+        font-size: .77rem;
+        margin-top: 8px;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media(max-width:1050px) {
+
+        .about-grid,
+        .scouting-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .watch-inner {
+            grid-template-columns: 1fr;
+        }
+
+        .watch-avatar {
+            max-width: 330px;
+            width: 100%;
+            margin: auto;
+        }
+
+        .stats {
+            grid-template-columns: repeat(3,1fr);
+        }
+
+        .talent-grid {
+            grid-template-columns: repeat(2,1fr);
+        }
+    }
+
+    @media(max-width:750px) {
+
+        .nav-links {
+            display: none;
+        }
+
+        section {
+            padding: 65px 0;
+        }
+
+        .intro {
+            min-height: 620px;
+        }
+
+        .intro h1 {
+            letter-spacing: -3px;
+        }
+
+        .mission-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .watch-inner {
+            padding: 30px 22px;
+        }
+
+        .stats {
+            grid-template-columns: repeat(2,1fr);
+        }
+
+        .talent-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media(max-width:450px) {
+
+        .container,
+        .intro-content {
+            width: calc(100% - 24px);
+        }
+
+        .intro h1 {
+            font-size: 3.5rem;
+        }
+
+        .about-main {
+            padding: 27px;
+        }
+
+        .stats {
+            gap: 8px;
+        }
+
+        .stat {
+            padding: 17px;
+        }
+
+        .stat strong {
+            font-size: 1.75rem;
+        }
+
+        .watch-avatar {
+            height: 250px;
+        }
+
+        .watch-avatar span {
+            width: 130px;
+            height: 130px;
+            font-size: 3.6rem;
+        }
+    }
+</style>
+
+</head> <body> <!-- ========================= NAVIGATION ========================= --> <nav>
+<div class="nav-inner">
+
+    <a href="#" class="logo">
+        Promising <span>Talents</span>
+    </a>
+
+    <ul class="nav-links">
+        <li><a href="#over-ons">Over ons</a></li>
+        <li><a href="#werkwijze">Onze missie</a></li>
+        <li><a href="#player">Player to Watch</a></li>
+        <li><a href="#talents">Talenten</a></li>
+    </ul>
+
+</div>
+
+</nav> <!-- ========================= INTRODUCTIE ========================= --> <header class="intro">
+<div class="intro-content">
+
+    <div class="eyebrow">
+        Scouting • Talentontwikkeling • Zichtbaarheid
+    </div>
+
+    <h1>
+        Promising<br>
+        <span>Talents</span><br>
+        Nederland
+    </h1>
+
+    <p class="intro-description">
+        Promising Talents Nederland is een scoutingplatform dat zich
+        richt op jonge voetballers met ambitie en potentie. Wij brengen
+        talenten onder de aandacht, geven hun prestaties een podium en
+        helpen jongeren om meer erkenning en zichtbaarheid te krijgen
+        binnen het Nederlandse voetbal.
+    </p>
+
+    <div class="intro-buttons">
+
+        <a href="#over-ons" class="btn btn-primary">
+            Ontdek Promising Talents
+        </a>
+
+        <a href="#talents" class="btn btn-secondary">
+            Bekijk talenten
+        </a>
+
+    </div>
+
+</div>
+
+</header> <main> <!-- ========================= OVER ONS ========================= --> <section id="over-ons">
+<div class="container">
+
+    <div class="heading">
+        <small>Wie zijn wij?</small>
+        <h2>Een podium voor de volgende generatie</h2>
+        <p>
+            Niet ieder talent krijgt automatisch de aandacht die het
+            verdient. Promising Talents Nederland wil die zichtbaarheid
+            vergroten.
+        </p>
+    </div>
+
+    <div class="about-grid">
+
+        <div class="about-main">
+
+            <h3>
+                Van talent naar erkenning
+            </h3>
+
+            <p>
+                In het Nederlandse jeugdvoetbal lopen iedere week
+                duizenden jonge spelers rond met dromen, ambitie en
+                kwaliteiten.
+            </p>
+
+            <p>
+                Promising Talents Nederland is opgezet om deze spelers
+                een professioneel digitaal podium te geven. Door
+                spelersprofielen, statistieken en scoutinginformatie
+                overzichtelijk samen te brengen, kunnen talenten beter
+                zichtbaar worden voor voetballiefhebbers, scouts,
+                trainers en voetbalorganisaties.
+            </p>
+
+            <p>
+                Ons doel is niet alleen om naar cijfers te kijken.
+                Ook speelstijl, kwaliteiten, ontwikkeling en potentieel
+                spelen een belangrijke rol in het verhaal achter een
+                jonge voetballer.
+            </p>
+
+        </div>
+
+        <div class="about-side">
+
+            <div class="about-stat">
+                <strong>01</strong>
+                <span>
+                    Talent ontdekken
+                </span>
+            </div>
+
+            <div class="about-stat">
+                <strong>02</strong>
+                <span>
+                    Spelers zichtbaar maken
+                </span>
+            </div>
+
+            <div class="about-stat">
+                <strong>03</strong>
+                <span>
+                    Jong talent erkenning geven
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section> <!-- ========================= MISSIE ========================= --> <section id="werkwijze">
+<div class="container">
+
+    <div class="heading">
+        <small>Onze missie</small>
+        <h2>Wat willen wij bereiken?</h2>
+        <p>
+            Promising Talents Nederland draait om het zichtbaar maken
+            van ambitie, prestaties en potentieel.
+        </p>
+    </div>
+
+    <div class="mission-grid">
+
+        <article class="mission-card">
+
+            <div class="mission-number">
+                01 / DISCOVER
+            </div>
+
+            <h3>Talent ontdekken</h3>
+
+            <p>
+                Jongeren met opvallende kwaliteiten krijgen de
+                mogelijkheid om onder de aandacht te komen.
+            </p>
+
+        </article>
+
+        <article class="mission-card">
+
+            <div class="mission-number">
+                02 / RECOGNIZE
+            </div>
+
+            <h3>Erkenning creëren</h3>
+
+            <p>
+                Een goed spelersprofiel kan helpen om prestaties,
+                kwaliteiten en ontwikkeling zichtbaar te maken.
+            </p>
+
+        </article>
+
+        <article class="mission-card">
+
+            <div class="mission-number">
+                03 / DEVELOP
+            </div>
+
+            <h3>Ontwikkeling stimuleren</h3>
+
+            <p>
+                Door aandacht te geven aan sterke punten en
+                ontwikkelingsgebieden ontstaat een completer beeld
+                van een talent.
+            </p>
+
+        </article>
+
+    </div>
+
+</div>
+
+</section> <!-- ========================= PLAYER TO WATCH ========================= --> <section id="player">
+<div class="container">
+
+    <div class="heading">
+
+        <small>Featured Talent</small>
+
+        <h2>Player to Watch</h2>
+
+        <p>
+            Iedere editie zetten we een talent extra in de spotlight.
+        </p>
+
+    </div>
+
+    <div class="player-watch">
+
+        <div class="watch-inner">
+
+            <div class="watch-avatar">
+                <span>9</span>
+            </div>
+
+            <div class="watch-content">
+
+                <div class="watch-label">
+                    Player to Watch
+                </div>
+
+                <h2>
+                    Cinar Celen
+                </h2>
+
+                <div class="watch-position">
+                    Spits • HOV/DJSCR O16-1
+                </div>
+
+                <p>
+                    Cinar Celen is een klassieke en moderne nummer 9
+                    met een sterk spitseninstinct. Zijn profiel wordt
+                    gekenmerkt door afmaken, snelheid en balvastheid.
+                </p>
+
+                <p>
+                    Met zijn diepgang kan hij verdedigingen achter de
+                    laatste lijn bedreigen, terwijl zijn balvastheid
+                    hem ook geschikt maakt als aanspeelpunt.
+                </p>
+
+                <div class="hero-meta"
+                     style="margin-top:20px;">
+
+                    <span class="hero-tag">#9</span>
+                    <span class="hero-tag">Spits</span>
+                    <span class="hero-tag">HOV/DJSCR</span>
+                    <span class="hero-tag">Top Belofte</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section> <!-- ========================= CINAR STATS ========================= --> <section>
+<div class="container">
+
+    <div class="heading">
+
+        <small>Performance</small>
+
+        <h2>Cinar in cijfers</h2>
+
+        <p>
+            Huidig seizoen 2026/2027.
+        </p>
+
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+            <small>Wedstrijden</small>
+            <strong>1</strong>
+        </div>
+
+        <div class="stat">
+            <small>Doelpunten</small>
+            <strong class="gold">1</strong>
+        </div>
+
+        <div class="stat">
+            <small>Schoten op doel</small>
+            <strong>2</strong>
+        </div>
+
+        <div class="stat">
+            <small>Rendement</small>
+            <strong class="green">50%</strong>
+        </div>
+
+        <div class="stat">
+            <small>Goals / wedstrijd</small>
+            <strong>1.00</strong>
+        </div>
+
+    </div>
+
+</div>
+
+</section> <!-- ========================= SCOUTING ========================= --> <section>
+<div class="container">
+
+    <div class="heading">
+
+        <small>Scout Report</small>
+
+        <h2>Scoutingprofiel</h2>
+
+    </div>
+
+    <div class="scouting-grid">
+
+        <div class="panel">
+
+            <h3>Player Attributes</h3>
+
+            <div class="skill">
+
+                <div class="skill-header">
+                    <span>Afmaken</span>
+                    <span>95</span>
+                </div>
+
+                <div class="bar">
+                    <div class="fill" style="width:95%"></div>
+                </div>
+
+            </div>
+
+            <div class="skill">
+
+                <div class="skill-header">
+                    <span>Snelheid</span>
+                    <span>92</span>
+                </div>
+
+                <div class="bar">
+                    <div class="fill" style="width:92%"></div>
+                </div>
+
+            </div>
+
+            <div class="skill">
+
+                <div class="skill-header">
+                    <span>Balvastheid</span>
+                    <span>87</span>
+                </div>
+
+                <div class="bar">
+                    <div class="fill" style="width:87%"></div>
+                </div>
+
+            </div>
+
+            <div class="skill">
+
+                <div class="skill-header">
+                    <span>Diepgang</span>
+                    <span>89</span>
+                </div>
+
+                <div class="bar">
+                    <div class="fill" style="width:89%"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="panel">
+
+            <h3>Scout's View</h3>
+
+            <p>
+                Cinar heeft het profiel van een aanvaller die op
+                meerdere manieren gevaar kan creëren.
+            </p>
+
+            <p>
+                Zijn snelheid maakt hem interessant in de diepte,
+                terwijl zijn balvastheid hem ook als aanspeelpunt
+                inzetbaar maakt.
+            </p>
+
+            <p>
+                In de zestienmeter ligt een duidelijke kwaliteit:
+                kansen herkennen en snel tot een doelpoging komen.
+            </p>
+
+            <p class="quote">
+                "Een nummer 9 met snelheid, rendement en het instinct
+                om op het juiste moment in scoringspositie te komen."
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section> <!-- ========================= TALENT BOARD ========================= --> <section id="talents">
+<div class="container">
+
+    <div class="heading">
+
+        <small>Talent Board</small>
+
+        <h2>Andere promising talents</h2>
+
+        <p>
+            Een selectie van jonge spelers uit verschillende
+            voetbalopleidingen.
+        </p>
+
+    </div>
+
+    <div class="talent-grid">
+
+        <!-- FC BARENDRECHT -->
+
+        <article class="talent">
+
+            <div class="talent-top">
+
+                <div class="talent-number">01</div>
+
+                <div class="talent-avatar">
+                    YD
+                </div>
+
+            </div>
+
+            <div class="talent-body">
+
+                <div class="club">
+                    FC Barendrecht
+                </div>
+
+                <h3>
+                    Yassin Demir
+                </h3>
+
+                <div class="talent-position">
+                    Rechtsbuiten • O16-1
+                </div>
+
+                <div class="mini-stats">
+
+                    <div class="mini-stat">
+                        <strong>20</strong>
+                        <small>Wedstr.</small>
+                    </div>
+
+                    <div class="mini-stat">
+                        <strong>16</strong>
+                        <small>Goals</small>
+                    </div>
+
+                    <div class="mini-stat">
+                        <strong>14</strong>
+                        <small>Assists</small>
+                    </div>
+
+                </div>
+
+                <div class="score">
+                    <span>Scout Score</span>
+                    <strong>88</strong>
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- SPARTAAN'20 -->
+
+        <article class="talent">
+
+            <div class="talent-top">
+
+                <div class="talent-number">02</div>
+
+                <div class="talent-avatar">
+                    MD
+                </div>
+
+            </div>
+
+            <div class="talent-body">
+
+                <div class="club">
+                    Spartaan'20
+                </div>
+
+                <h3>
+                    Milan van Dijk
+                </h3>
+
+                <div class="talent-position">
+                    Middenvelder • O16-1
+                </div>
+
+                <div class="mini-stats">
+
+                    <div class="mini-stat">
+                        <strong>21</strong>
+                        <small>Wedstr.</small>
+                    </div>
+
+                    <div class="mini-stat">
+                        <strong>11</strong>
+                        <small>Goals</small>
+                    </div>
+
+                    <div class="mini-stat">
+                        <strong>18</strong>
+                        <small>Assists</small>
+                    </div>
+
+                </div>
+
+                <div class="score">
+                    <span>Scout Score</span>
+                    <strong>89</strong>
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- FEYENOORD -->
+
+        <article class="talent">
+
+            <div class="talent-top">
+
+                <div class="talent-number">03</div>
+
+                <div class="talent-avatar">
+                    EK
+                </div>
+
+            </div>
+
+            <div class="talent-body">
+
+                <div class="club">
+                    Feyenoord
+                </div>
+
+                <h3>
+                    Emir Kaya
+                </h3>
+
+                <div class="talent-position">
+                    Aanvallende middenvelder • O16
+                </div>
+
+                <div class="mini-stats">
+
+                    <div class="mini-stat">
+                        <strong>19</strong>
+                        <small>Wedstr.</small>
+                    </div>
+
+                    <div class="mini-stat">
+                        <strong>15</strong>
+                        <small>Goals</small>
+                    </div>
+
+                    <div class="mini-stat">
+                        <strong>17</strong>
+                        <small>Assists</small>
+                    </div>
+
+                </div>
+
+                <div class="score">
+                    <span>Scout Score</span>
+                    <strong>94</strong>
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- SPARTA -->
+
+        <article class="talent">
+
+            <div class="talent-top">
+
+                <div class="talent-number">04</div>
+
+                <div class="talent-avatar">
+                    JS
+                </div>
+
+            </div>
+
+            <div class="talent-body">
+
+                <div class="club">
+                    Sparta Rotterdam
+                </div>
+
+                <h3>
+                    Jayden Smit
+                </h3>
+
+                <div class="talent-position">
+                    Centrale verdediger • O16
+                </div>
+
+                <div class="mini-stats">
+
+                    <div class="mini-stat">
+                        <strong>22</strong>
+                        <small>Wedstr.</small>
+                    </div>
+
+                    <div class="mini-stat">
+                        <strong>4</strong>
+                        <small>Goals</small>
+                    </div>
+
+                    <div class="mini-stat">
+                        <strong>5</strong>
+                        <small>Assists</small>
+                    </div>
+
+                </div>
+
+                <div class="score">
+                    <span>Scout Score</span>
+                    <strong>87</strong>
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</div>
+
+</section> <!-- ========================= HISTORISCHE CINAR STATS ========================= --> <section>
+<div class="container">
+
+    <div class="heading">
+
+        <small>2025 / 2026</small>
+
+        <h2>Cinar — O15 seizoen</h2>
+
+        <p>
+            Historische statistieken.
+        </p>
+
+    </div>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Statistiek</th>
+                    <th>Waarde</th>
+                    <th>Seizoen</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Doelpunten</td>
+                    <td class="gold">47</td>
+                    <td>2025/2026</td>
+                </tr>
+
+                <tr>
+                    <td>Assists</td>
+                    <td class="gold">12</td>
+                    <td>2025/2026</td>
+                </tr>
+
+                <tr>
+                    <td>Goals + Assists</td>
+                    <td class="green">59</td>
+                    <td>2025/2026</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</section> <!-- ========================= CTA ========================= --> <section>
+<div class="container">
+
+    <div class="cta">
+
+        <div class="eyebrow">
+            Promising Talents Nederland
+        </div>
+
+        <h2 style="margin-top:18px;">
+            Het volgende talent<br>
+            kan overal vandaan komen.
+        </h2>
+
+        <p>
+            Wij willen jonge voetballers een podium geven waarop
+            hun kwaliteiten, prestaties en ambitie gezien kunnen
+            worden.
+        </p>
+
+        <a href="#talents" class="btn btn-primary">
+            Ontdek de talenten
+        </a>
+
+    </div>
+
+</div>
+
+</section> </main> <!-- FOOTER --> <footer>
+<div class="footer-logo">
+    PROMISING <span>TALENTS</span> NEDERLAND
+</div>
+
+<p>
+    Scouting • Talentontwikkeling • Zichtbaarheid
+</p>
+
+<p>
+    © 2026 Promising Talents Nederland
+    · Scout ID: #9-CELEN
+</p>
+
+</footer> </body> </html>
